@@ -1,0 +1,33 @@
+# You are given two integer numbers in the form of string, the base a and the index b. You have to find the last digit of a raise to b.
+# Link: https://www.geeksforgeeks.org/problems/find-last-digit-of-ab-for-large-numbers1936/1
+# Approach: The last digit of powers of a number forms a cycle. To efficiently find the last digit of the largest powers, u only have to determine the cycle of the last digit. This drastically reduce the amount of computation required.
+# Difficulty: Medium
+
+class Solution:
+    def getLastDigit(self, a, b):
+        # code here 
+        base = int(a)
+        power = int(b)
+        if power==0:
+            return 1
+        i = 1
+        lst = []
+        base_last_no = base%10
+        num = base_last_no**i
+        num_last_no = num%10
+        lst.append(num)
+        while(True):
+            i = i+1
+            num = base_last_no**i
+            num_last_no = num%10
+            if num_last_no != lst[0]:
+                lst.append(num_last_no)
+            else:
+                break
+        length_lst = i-1
+        optimized_power = power%length_lst
+        last_digit = lst[optimized_power-1]
+        return last_digit
+    
+soln = Solution()
+print(soln.getLastDigit(98765432112,10000000))
