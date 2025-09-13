@@ -1,3 +1,9 @@
+# Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+# 0 <= a, b, c, d < n
+# a, b, c, and d are distinct.
+# nums[a] + nums[b] + nums[c] + nums[d] == target
+# Link: https://leetcode.com/problems/4sum/
+# Approach: Extended version of 3_sum. For each element in the array at the ith index, calculate the difference b/w that element and the target value, then apply 3-sum logic. Repeat it till i reaches to n-2.
 class Solution(object):
     def fourSum(self, nums, target):
         """
@@ -25,6 +31,7 @@ class Solution(object):
     
 soln = Solution()
 print(soln.fourSum([1, 1, 2, 2, 2, 2, 3, 3],8))
+
 
 
 
